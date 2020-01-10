@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="img/logo.png" alt="SocketIO Chat"></a>
+ <img width=200px height=200px src="img/icon.png" alt="SocketIO Chat"></a>
 </p>
 
 <h2 align="center">Socket Chat</h2>
