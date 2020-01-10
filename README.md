@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="SocketIO Chat"></a>
+ <img width=200px height=200px src="img/logo.png" alt="SocketIO Chat"></a>
 </p>
 
 <h2 align="center">Socket Chat</h2>
@@ -8,10 +8,11 @@
 <div align="center">
 
   [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
-  [![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
+  [![GitHub issues](https://img.shields.io/github/issues/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/issues)
+  [![GitHub forks](https://img.shields.io/github/forks/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/network)
+  [![GitHub stars](https://img.shields.io/github/stars/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/stargazers)
+  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/pulls)
+  [![GitHub license](https://img.shields.io/github/license/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/blob/master/LICENSE)
 </div>
 
 ---
