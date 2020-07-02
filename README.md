@@ -7,12 +7,13 @@
 
 <div align="center">
 
-  [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
+  [![Status](https://img.shields.io/badge/status-active-success.svg)]()
   [![GitHub issues](https://img.shields.io/github/issues/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/issues)
   [![GitHub forks](https://img.shields.io/github/forks/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/network)
   [![GitHub stars](https://img.shields.io/github/stars/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/stargazers)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/pulls)
   [![GitHub license](https://img.shields.io/github/license/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/blob/master/LICENSE)
+  [![Docker Builds](https://img.shields.io/badge/docker%20build-passing-brightgreen?style=flat-square&logo=docker&labelColor=blue&logoColor=white)](https://hub.docker.com/r/vijethph/socketchat)
 </div>
 
 ---
@@ -44,7 +45,7 @@ Users can simply join into the chat and put up messages which can be read by oth
 Follow these instructions in order to get a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on as a live server.
 
 ### Prerequisites
-node.js>=10 and npm>=2.25 are required. 
+node.js>=10 and npm>=2.25 are required.
 
 After installing, check their versions using these commands
 
@@ -56,17 +57,16 @@ npm -v
 ### 🧱 Installing <a name="installing"></a>
 Clone this project and open this project in terminal.
 
-Install Express and SocketIO
+Install Dependencies:  Express and SocketIO
 
 ```
-npm install express
-npm install socketio
+npm install
 ```
 
-And run the project using following command and check the output at https://localhost:3000 in your browser.
+And run the project using following command and check the output at http://localhost:3000 in your browser.
 
 ```
-node server.js
+npm start
 ```
 
 The following output will be shown in the terminal after running above command.
@@ -74,6 +74,13 @@ The following output will be shown in the terminal after running above command.
 ```
 listening on *:3000
 ```
+
+Another way to install this app is to use it's Docker Image, which is available at [DockerHub](https://hub.docker.com/r/vijethph/socketchat). Just run these commands to pull the image and start the container:
+```
+docker pull vijethph/socketchat
+docker run -p 3000:3000 vijethph/socketchat
+```
+This will run the app at http://localhost:3000, which can be checked in your browser.
 
 <!--## 🔧 Running the tests <a name = "tests"></a>
 Explain how to run the automated tests for this system.
@@ -94,7 +101,7 @@ Give an example
 -->
 
 ## 🎈 Usage <a name="usage"></a>
-This application can be used by others if it is deployed using the steps in [deployment](#deployment). For usage by a single user, the above [installation](#installing) steps are sufficient. 
+This application can be used by others if it is deployed using the steps in [deployment](#deployment). For usage by a single user, the above [installation](#installing) steps are sufficient.
 
 ## 🚀 Deployment <a name = "deployment"></a>
 After starting the server, open another terminal, connect to the internet and type the following
@@ -105,7 +112,7 @@ lt --port 3000
 ```
 Now the project is deployed. It will show an output giving a website address like this:
 ```
-deployed at
+deployed at xyz@site.com
 ```
 Ask your friends to open up the specified url and start chatting.
 
@@ -120,9 +127,9 @@ Ask your friends to open up the specified url and start chatting.
 See also the list of [contributors](https://github.com/vijethph/) who participated in this project.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-- Thanks to CPMA Session conducted by ATS Learning Solutions 
+- Thanks to CPMA Session conducted by ATS Learning Solutions
 - Inspiration: Project Ideas for Javascript
-- References: All Youtube Channels for using ScoketIO.
+- References: All Youtube Channels for using SocketIO.
 
 
-### Made with ❤ in India 
+### Made with ❤ in India
