@@ -130,6 +130,7 @@ See also the list of [contributors](https://github.com/vijethph/) who participat
 - Thanks to CPMA Session conducted by ATS Learning Solutions
 - Inspiration: Project Ideas for Javascript
 - References: All Youtube Channels for using SocketIO.
+- [Brad Traversy](https://github.com/bradtraversy)
 
 
 ### Made with ❤ in India
