@@ -17,6 +17,6 @@ jobs:
     - name: Login to DockerHub Registry
       run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Build the latest Docker image
-      run: docker build . --file Dockerfile --tag vijethph/SocketChat:latest
+      run: docker build . --file Dockerfile --tag vijethph/socketchat:latest
     - name: Push the latest Docker image
-      run: docker push vijethph/SocketChat:latest
+      run: docker push vijethph/socketchat:latest
