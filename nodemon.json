@@ -1,0 +1,6 @@
+{
+  "execMap": {
+    "ts": "ts-node"
+  },
+  "watch": ["server.ts", "utils.ts", "public/"]
+}

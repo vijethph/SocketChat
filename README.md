@@ -1,6 +1,5 @@
 <p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="img/icon.png" alt="SocketIO Chat"></a>
+ <img width=100px height=100px src="public/img/icon.png" alt="SocketIO Chat"></a>
 </p>
 
 <h2 align="center">Socket Chat</h2>
@@ -14,15 +13,17 @@
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/pulls)
   [![GitHub license](https://img.shields.io/github/license/vijethph/SocketChat)](https://github.com/vijethph/SocketChat/blob/master/LICENSE)
   [![Docker Builds](https://img.shields.io/badge/docker%20build-passing-brightgreen?style=flat-square&logo=docker&labelColor=blue&logoColor=white)](https://hub.docker.com/r/vijethph/socketchat)
+  [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/vijethph/SocketChat)
+  [![Made with TypeScript](https://img.shields.io/badge/made%20with-typescript-blue?style=flat-square&logo=typescript&labelColor=023047)](https://www.typescriptlang.org/)
 </div>
 
 ---
 
-<p align="center"> A SocketIO based online chat application which can be deployed to Localtunnel
-    <br> Made with HTML, CSS and Javascript
+<p align="center"> A SocketIO based online chat application which can be deployed and run via Docker and Localtunnel
+    <br> Made with TypeScript, ExpressJS, ioredis and Bootstrap
 </p>
 
-## 📝 Table of Contents
+## 📋 Table of Contents
 - [Screenshots](#screenshots)
 - [About](#about)
 - [Getting Started](#getting_started)
@@ -32,20 +33,28 @@
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
 
-## Screenshots <a name="screenshots"></a>
-![Login page](img/login.jpg "Login Screen")
-![Chat Page](img/chatting.jpg "Chatting Screen")
+## 📸 Screenshots <a name="screenshots"></a>
+|    Login Page   |    New User Entry     |  Chat Screen   |           
+| :---------: | :-----------: | :-----------: |      
+| <img src="public/img/loginscreen.png" alt="Login Page" height="400" /> | <img src="public/img/newuserentry.png" alt="New User Entry" height="400" /> | <img src="public/img/chatcontinue.png" alt="Chat Screen" height="400" /> |     
+| Login Page | Notification to existing users on new user join | Chat Screen in a room |            
 
-## 🧐 About <a name = "about"></a>
-This is a javascript program that can be used to connect online with friends by hosting one server at any particular point. It uses Express and SocketIO frameworks to establish and maintain the connection.
+|    Sending Location   |    Location Details     |             
+| :---------: | :-----------: |    
+| <img src="public/img/sendinglocation.png" alt="Sending Location" height="400" /> | <img src="public/img/locationdetails.png" alt="Location Details" height="400" /> |    
+| Location Details sent as a modal link | Location Map displayed in a modal |       
 
-Users can simply join into the chat and put up messages which can be read by others.
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## ℹ️ About <a name = "about"></a>
+This is a chat application that can be used to connect online with friends by hosting one server at any particular point. It uses Express and SocketIO frameworks to establish and maintain the connection, and Redis to broadcast events to a subset of clients (users in a room).
+
+Users can pick a room and join the chat and send messages which can be read by others. They can also send their location co-ordinates to others, which is displayed in a map under a modal.
+
+## ⚙️ Getting Started <a name = "getting_started"></a>
 Follow these instructions in order to get a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on as a live server.
 
-### Prerequisites
-node.js>=10 and npm>=2.25 are required.
+### 💾 Prerequisites
+node.js>=16 and npm>=7 are required.
 
 After installing, check their versions using these commands
 
@@ -54,33 +63,45 @@ node -v
 npm -v
 ```
 
-### 🧱 Installing <a name="installing"></a>
+### 💻 Installing <a name="installing"></a>
 Clone this project and open this project in terminal.
 
-Install Dependencies:  Express and SocketIO
+Install Dependencies.
 
-```
+```bash
 npm install
 ```
 
-And run the project using following command and check the output at http://localhost:3000 in your browser.
+Pull Redis image from DockerHub and run it in background.   
 
+```bash
+docker pull redis:6.2
+docker run --name redis-cache -p 6379:6379 -d redis:6.2
 ```
+
+Create a `.env` file in the project folder and add the following entry:
+
+```env
+REDIS_URL="redis://localhost:6379"
+```
+
+Finally, run the project using following command and check the output at http://localhost:3000 in your browser.
+
+```bash
 npm start
 ```
 
 The following output will be shown in the terminal after running above command.
 
-```
-listening on *:3000
+```bash
+listening on PORT:3000
 ```
 
-Another way to install this app is to use it's Docker Image, which is available at [DockerHub](https://hub.docker.com/r/vijethph/socketchat). Just run these commands to pull the image and start the container:
+Another way to install this app is to use Docker Compose. Run this command to start the app:
 ```
-docker pull vijethph/socketchat
-docker run -p 3000:3000 vijethph/socketchat
+docker-compose up
 ```
-This will run the app at http://localhost:3000, which can be checked in your browser.
+This will run the app at http://localhost:3000, which can be seen in your browser.
 
 <!--## 🔧 Running the tests <a name = "tests"></a>
 Explain how to run the automated tests for this system.
@@ -100,7 +121,7 @@ Give an example
 ```
 -->
 
-## 🎈 Usage <a name="usage"></a>
+## 🌐 Usage <a name="usage"></a>
 This application can be used by others if it is deployed using the steps in [deployment](#deployment). For usage by a single user, the above [installation](#installing) steps are sufficient.
 
 ## 🚀 Deployment <a name = "deployment"></a>
@@ -120,11 +141,12 @@ Ask your friends to open up the specified url and start chatting.
 - [Express](https://expressjs.com/) - Server Framework
 - [SocketIO](https://socketio.com/) - Connection Framework
 - [NodeJS](https://nodejs.org/en/) - Server Environment
+- [TypeScript](https://www.typescriptlang.org/) - Programming Language
+- [Redis](https://redis.io/) - Messaging Cache
+- [Docker](https://docs.docker.com/get-started/overview/) - Build Framework
 
 ## ✍️ Authors <a name = "authors"></a>
-- [@vijethph](https://github.com/vijeth) - Idea & Full Development
-
-See also the list of [contributors](https://github.com/vijethph/) who participated in this project.
+- [@vijethph](https://github.com/vijeth) - Idea & Development
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 - Thanks to CPMA Session conducted by ATS Learning Solutions
@@ -132,5 +154,3 @@ See also the list of [contributors](https://github.com/vijethph/) who participat
 - References: All Youtube Channels for using SocketIO.
 - [Brad Traversy](https://github.com/bradtraversy)
 
-
-### Made with ❤ in India

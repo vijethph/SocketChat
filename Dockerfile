@@ -1,19 +1,41 @@
-# Done by Vijeth P H
+# First stage: compile things.
+FROM node:16-alpine AS build
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-FROM node:12.18.2-alpine
+# (Install OS dependencies; include -dev packages if needed.)
 
-ENV APP_HOME /app
-RUN mkdir -pv $APP_HOME
-WORKDIR $APP_HOME
-
-ADD . $APP_HOME
-
-ENV NODE_ENV production
-ENV NPM_CONFIG_LOGLEVEL warn
-
-
-EXPOSE 3000
-
+# Install the Javascript dependencies, including all devDependencies.
+COPY --chown=node:node package.json .
 RUN npm install
 
-CMD ["npm","start"]
+# Copy the rest of the application in and build it.
+COPY --chown=node:node . .
+RUN chown -R node:node /usr/src/app
+USER node
+RUN npx tsc
+RUN npm run build
+
+
+# Second stage: run things.
+FROM node:16-alpine as deploy
+ENV NODE_ENV production
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# (Install OS dependencies; just libraries.)
+
+# Install the Javascript dependencies, only runtime libraries.
+COPY --chown=node:node package.json .
+RUN npm install --production
+
+# Copy the dist tree from the first stage.
+COPY --chown=node:node --from=build /usr/src/app .
+COPY --chown=node:node public /usr/src/app/
+
+USER node
+
+# Run the built application when the container starts.
+EXPOSE 3000 10000
+CMD ["node", "server.js"]
+

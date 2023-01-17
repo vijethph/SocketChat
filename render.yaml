@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: socketchat-app
+    env: docker
+    repo: https://github.com/vijethph/SocketChat.git
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: conscious-helicopter
+          property: connectionString
+  - type: redis
+    name: conscious-helicopter
+    ipAllowList: []
+    plan: free 
